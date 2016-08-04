@@ -4,11 +4,11 @@ const re = new RegExp('[^A-Za-z]','g');
 let base = 2;
 let direction = 1;
 while (process.argv[base][0] === '-') {
-    ++base;
     switch(process.argv[base][1]) {
-        case 'e': direction = -1; break;
-        case 'd': direction = 1; break;
+        case 'e': direction = -1; console.log('encrypting'); break;
+        case 'd': direction = 1; console.log('decrypting'); break;
     }
+    ++base;
 }
 const key = process.argv[base].replace(re, '').toUpperCase();
 const message = process.argv[base + 1].replace(re, '').toUpperCase();
