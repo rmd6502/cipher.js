@@ -2,16 +2,17 @@
 function decrypt() {
     const key = document.getElementsByName('key')[0].value.toUpperCase();
     const message = document.getElementsByName('text')[0].value.toUpperCase();
-    const decrypted = _decrypt(message, key);
+    const encrypt = document.getElementsByName('encrypt')[0].checked;
+    const decrypted = _decrypt(message, key, encrypt ? -1 : 1);
     document.querySelector('#result').innerHTML = decrypted;
 }
 
-function _decrypt(message, key) {
-    const direction = 1;
+function _decrypt(message, key, direction) {
     const re = new RegExp('[^A-Za-z]','g');
     const charA = 'A'.charCodeAt(0);
     const keyArray = [];
     for (let i=0; i < key.length; ++i) {
+        if (key[i].match(re) !== null) { continue; }
         keyArray.push(key.charCodeAt(i) - charA);
     }
     const decrypted = [];
