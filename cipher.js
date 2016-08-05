@@ -28,7 +28,8 @@ for (let i=0; i < message.length; ++i) {
         continue;
     }
     const messageChar = message.charCodeAt(i) - charA;
-    const keyChar = keyArray[(index++) % keyArray.length];
+    const keyChar = keyArray[index];
+    index = (index + 1) % keyArray.length;
     // +26 keeps negative numbers from generating weird character codes
     const decryptedChar = ((messageChar + direction * keyChar + 26) % 26) + charA;
     decrypted.push(decryptedChar);
