@@ -22,14 +22,14 @@ for (let i=0; i < key.length; ++i) {
 const decrypted = [];
 let index = 0;
 for (let i=0; i < message.length; ++i) {
-    if (re.test(message[i])) {
+    if (message[i].match(re)) {
         // non-alpha goes straight to decrypted unprocessed.
         decrypted.push(message.charCodeAt(i));
         continue;
     }
-    // +26 keeps negative numbers from generating weird character codes
     const messageChar = message.charCodeAt(i) - charA;
     const keyChar = keyArray[(index++) % keyArray.length];
+    // +26 keeps negative numbers from generating weird character codes
     const decryptedChar = ((messageChar + direction * keyChar + 26) % 26) + charA;
     decrypted.push(decryptedChar);
 }
