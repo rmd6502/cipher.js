@@ -3,3 +3,11 @@
 #test {
   color: gray;
 }
+
+input[type="button"] {
+    width: 10%;
+}
+
+input[type="text"] {
+    width: 90%;
+}

@@ -54,4 +54,12 @@ function _decrypt(message, key, direction) {
     return String.fromCharCode.apply(String, decrypted);
 }
 
+function changeButton(button) {
+    var actionButton = document.getElementById("operation");
+    if (button.checked) {
+        actionButton.value="Encrypt";
+    } else {
+        actionButton.value="Decrypt";
+    }
+}
 
